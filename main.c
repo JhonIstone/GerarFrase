@@ -16,23 +16,25 @@ void chamasujeito(){
     int k = 0;
     int i;
     char aux;
-    char palavra[20];
+    char palavraSujeito[20];
 
     FILE *sujeito = fopen("sujeito.txt", "r");
-    if (sujeito == NULL)
+    if (!sujeito)
         printf ("ERRO");
 
     else{
         while (k < j){
             i = 0;
-            limpar(palavra, 20);
+            limpar(palavraSujeito, 20);
             while ((aux = fgetc(sujeito)) != '\n'){
-                palavra[i] = aux;
+                palavraSujeito[i] = aux;
                 i++;
             }
             k++;
         }
-        printf ("%s ", palavra);
+        printf ("%s ", palavraSujeito);
+        limpar(palavraSujeito, 20);
+         k=0;
     }
     fclose(sujeito);
 }
@@ -43,22 +45,24 @@ void chamaverbo (){
     int k = 0;
     int i;
     char aux;
-    char palavra[20];
+    char palavraVerbo[20];
 
     FILE *verbo = fopen("verbo.txt", "r");
-    if (verbo == NULL)
+    if (!verbo)
         printf ("ERRO");
     else{
         while (k < j){
             i = 0;
-            limpar(palavra, 20);
+            limpar(palavraVerbo, 20);
             while ((aux = fgetc(verbo)) != '\n'){
-                palavra[i] = aux;
+                palavraVerbo[i] = aux;
                 i++;
             }
             k++;
         }
-        printf ("%s ", palavra);
+        printf ("%s ", palavraVerbo);
+        limpar(palavraVerbo, 20);
+         k=0;
     }
     fclose(verbo);
 }
@@ -69,22 +73,24 @@ void chamaobjeto (){
     int k = 0;
     int i;
     char aux;
-    char palavra[20];
+    char palavraObjeto[20];
 
     FILE *objeto = fopen("objeto.txt", "r");
-    if (objeto == NULL)
+    if (!objeto)
         printf ("ERRO");
     else{
         while (k < j){
             i = 0;
-            limpar(palavra, 20);
+            limpar(palavraObjeto, 20);
             while ((aux = fgetc(objeto)) != '\n'){
-                palavra[i] = aux;
+                palavraObjeto[i] = aux;
                 i++;
             }
             k++;
         }
-        printf ("%s ", palavra);
+        printf ("%s ", palavraObjeto);
+        limpar(palavraObjeto, 20);
+        k=0;
     }
     fclose(objeto);
 }
@@ -92,8 +98,8 @@ void chamaobjeto (){
 int main(){
     srand(time(NULL));
     char aux;
-    int i, j, k;
-
+    int i=0, j, k;
+while(i<10){
     printf ("Frase Gerada:\n\n");
     chamasujeito();
     chamaverbo();
@@ -102,6 +108,8 @@ int main(){
     chamasujeito();
     chamaverbo();
     chamaobjeto();
-
+    printf("\n");
+    i++;
+}
     return 0;
 }
